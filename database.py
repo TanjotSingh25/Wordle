@@ -1,4 +1,5 @@
 class database:
+    
     def __init__(self, word_length, file):
         self.database = self.make_database(file)
         self.word_length = word_length
