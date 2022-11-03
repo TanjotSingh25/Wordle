@@ -5,9 +5,13 @@ class database:
 
     def make_database(self, file):
         word_file = open(file)
-        data = make_hash_table()
+        data = self.make_hash_table()
         for word in word_file:
-            hash(data, word)
+            if(word.length != self.word_length):
+                continue
+            if(word.strip() == ""):
+                continue
+            self.hash(data, word.strip())
         return data
 
     def make_hash_table(self):
@@ -17,17 +21,22 @@ class database:
         return hash_table
 
     # Creating function that hashes each string based of first 3 characters of that word
-    def hash_number(word):
+    def hash_number(self, word):
         # convert char to ascii value
-        c = ord(word[0]) + ord(word[1]) + ord(word[2])
+        c = (26*26*(ord(word[0])-97)) + (26*(ord(word[1])-97)) + (ord(word[2])-97)
         return c
     
-    def hash(data, word):
-        h = hash_number(word)
+    def hash(self, data, word):
+        h = self.hash_number(word)
         data[h].append(word)
     
     def add_word(self, word):
-        h = hash_number(word)
+        if(word.length() != self.word_length):
+            print("Word length does not match")
+            return
+        h = self.hash_number(word)
         self.database[h].append(word)
+
+
 
 
