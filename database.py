@@ -2,20 +2,20 @@ class database:
 
     def __init__(self, word_length, file):
         self.word_length = word_length
-        self.database, self.search_database = self.make_database(file)
+        self.database = self.make_hash_table()
+        self.search_database = []
+        self.make_database(file)
 
     def make_database(self, file):
         word_file = open(file)
-        data = self.make_hash_table()
-        search_database = []
         for word in word_file:
-            if(len(word) != self.word_length):
+            word = word.strip()
+            if(len(word) != self.word_length):  
                 continue
-            if(word.strip() == ""):
+            if(word == ""):
                 continue
-            self.hash(data, word.strip())
-            search_database.append(word.strip())
-        return data, search_database
+            self.hash(word)
+            self.search_database.append(word)
 
     def make_hash_table(self):
         hash_table = []
@@ -29,9 +29,9 @@ class database:
         c = (26*26*(ord(word[0])-97)) + (26*(ord(word[1])-97)) + (ord(word[2])-97)
         return c
     
-    def hash(self, data, word):
+    def hash(self, word):
         h = self.hash_number(word)
-        data[h].append(word)
+        self.database[h].append(word)
     
     def add_word(self, word):
         if(word.length() != self.word_length):
