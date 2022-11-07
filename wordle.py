@@ -118,8 +118,7 @@ def main():
     
     game.animate_intro()
 
-    # game.select_random_word()
-    game.selected_word = "bonds"
+    game.select_random_word()
 
     print(game.selected_word)
 
