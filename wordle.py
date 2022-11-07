@@ -120,8 +120,6 @@ def main():
 
     game.select_random_word()
 
-    print(game.selected_word)
-
     while(game.guesses_count > 0):
         game.print_framework()
         guess = game.get_guess()
