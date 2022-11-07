@@ -24,11 +24,11 @@ class wordle:
         description = f"\t\t\t\t\t\t\tYou have {self.word_length} chances to guess the word.\n\t\tAfter each guess, you will be told which letters are not in the word,\n\twhich letters are in correct position, and which letters are in good position.\n\n\t\t\t\t\t\t\t\t\t\t\t\tGood luck!"
         for i in range(len(title)):
             print(title[i], end="", flush=True)
-            # time.sleep(0.1)
+            time.sleep(0.1)
         print()
         for i in range(len(description)):
             print(description[i], end="", flush=True)
-            # time.sleep(0.05)
+            time.sleep(0.05)
     
     def select_random_word(self):
         l = len(self.dictionary.search_database)
